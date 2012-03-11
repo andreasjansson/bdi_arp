@@ -44,7 +44,7 @@
 #
 # Run the current arrangement simply by `python agent.py` (or
 # `python2 agent.py`). This requires python-portmidi
-# (https://github.com/grantma/python-portmidi), and the portmidi
+# (https://github.com/grantma/python-portmidi), and portmidi
 # (available in the repos on most Linux distros). Run pmdefaults
 # to assign a MIDI output device.
 
@@ -232,7 +232,7 @@ class Agent:
 
     def consonance_score(self, current_chord, arpeggio):
         """
-        How well does this chord fit with the current chord
+        How well does this arpeggio fit with the current chord
         (or the chord we want everyone to change to).
         """
         arp_profile = self.get_arpeggio_profile(arpeggio)
@@ -559,7 +559,7 @@ def main():
         time.sleep(0.2)
         for i, note in enumerate(notes):
             if note is not None:
-                midi_out.WriteShort(0x80 + i, note, 80)
+                midi_out.WriteShort(0x80 + i, note, 0)
 
         for agent in agents:
             agent.forget()
